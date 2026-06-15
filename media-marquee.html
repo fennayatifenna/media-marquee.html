@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Logo Marquee</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:ital,wght@600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+  }
+
+  .media-section {
+    position: relative;
+    padding: 56px 0 64px;
+    overflow: hidden;
+  }
+
+  .media-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #6e1f37, #a8324f, #6e1f37);
+  }
+
+  h2.media-heading {
+    text-align: center;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.3px;
+    margin-bottom: 44px;
+    padding: 0 20px;
+  }
+
+  .marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: marquee-scroll 32s linear infinite;
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 64px;
+    padding: 0 46px;
+  }
+
+  @media (max-width: 640px) {
+    .logo-item { padding: 0 28px; height: 48px; }
+  }
+
+  /* ---- Individual wordmark styles ---- */
+
+  .logo-tribun {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: 'Playfair Display', serif;
+  }
+  .logo-tribun .t1 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.7rem;
+    color: #1a1a1a;
+  }
+  .logo-tribun .t2 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.7rem;
+    color: #1a1a1a;
+  }
+  .logo-tribun .t3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #8a8a8a;
+  }
+
+  .logo-viva {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .logo-viva .v1 {
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #3a8bd1 0%, #d44fa0 45%, #f5a623 75%, #6b3fa0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .logo-viva .v2 {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #6a6a6a;
+  }
+
+  .logo-kompas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+  }
+  .logo-kompas .k1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.65rem;
+    color: #1a1a1a;
+  }
+  .logo-kompas .k1 .dotcom { color: #e87722; }
+  .logo-kompas .k2 {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    color: #8a8a8a;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .logo-bisnis {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #1a1a1a;
+  }
+
+  .logo-kontan {
+    position: relative;
+    font-weight: 800;
+    font-size: 1.7rem;
+    color: #1f3864;
+    letter-spacing: 0.5px;
+  }
+  .logo-kontan::after {
+    content: '~';
+    position: absolute;
+    top: -16px;
+    right: 2px;
+    font-size: 1.4rem;
+    color: #2e9b4f;
+    font-weight: 800;
+  }
+
+  .logo-inews {
+    display: flex;
+    align-items: baseline;
+    font-weight: 800;
+    font-size: 1.8rem;
+    font-style: italic;
+  }
+  .logo-inews .i1 { color: #e3262e; }
+  .logo-inews .n1 { color: #1a1a1a; }
+
+  .logo-suara {
+    font-weight: 800;
+    font-size: 1.7rem;
+    color: #8e2ea3;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-berita {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-berita .badge {
+    background: #e3262e;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    line-height: 1;
+  }
+  .logo-berita .badge .s { font-weight: 800; }
+  .logo-berita .caption {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .logo-berita .caption .top {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+  }
+  .logo-berita .caption .bottom {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: #8a8a8a;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<section class="media-section">
+  <h2 class="media-heading">Kamu Mungkin Pernah Melihat Kami Di</h2>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="track">
+      <!-- set 1 -->
+      <div class="logo-item">
+        <div class="logo-tribun"><span class="t1">Tribun</span><span class="t2">news</span><span class="t3">.com</span></div>
+      </div>
+      <div class="logo-item">
+        <div class="logo-viva"><span class="v1">VIVA</span><span class="v2">.co.id</span></div>
+      </div>
+      <div class="logo-item">
+        <div class="logo-kompas">
+          <div class="k1">KOMPAS<span class="dotcom">.com</span></div>
+          <div class="k2">JERNIH MELIHAT DUNIA</div>
+        </div>
+      </div>
+      <div class="logo-item"><div class="logo-bisnis">Bisnis Indonesia</div></div>
+      <div class="logo-item"><div class="logo-kontan">Kontan</div></div>
+      <div class="logo-item">
+        <div class="logo-inews"><span class="i1">i</span><span class="n1">News</span></div>
+      </div>
+      <div class="logo-item"><div class="logo-suara">suara.com</div></div>
+      <div class="logo-item">
+        <div class="logo-berita">
+          <div class="badge">BERITA</div>
+          <div class="caption">
+            <div class="top">SATU</div>
+            <div class="bottom">MEDIA HOLDING</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- set 2 (duplicate for seamless loop) -->
+      <div class="logo-item">
+        <div class="logo-tribun"><span class="t1">Tribun</span><span class="t2">news</span><span class="t3">.com</span></div>
+      </div>
+      <div class="logo-item">
+        <div class="logo-viva"><span class="v1">VIVA</span><span class="v2">.co.id</span></div>
+      </div>
+      <div class="logo-item">
+        <div class="logo-kompas">
+          <div class="k1">KOMPAS<span class="dotcom">.com</span></div>
+          <div class="k2">JERNIH MELIHAT DUNIA</div>
+        </div>
+      </div>
+      <div class="logo-item"><div class="logo-bisnis">Bisnis Indonesia</div></div>
+      <div class="logo-item"><div class="logo-kontan">Kontan</div></div>
+      <div class="logo-item">
+        <div class="logo-inews"><span class="i1">i</span><span class="n1">News</span></div>
+      </div>
+      <div class="logo-item"><div class="logo-suara">suara.com</div></div>
+      <div class="logo-item">
+        <div class="logo-berita">
+          <div class="badge">BERITA</div>
+          <div class="caption">
+            <div class="top">SATU</div>
+            <div class="bottom">MEDIA HOLDING</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
